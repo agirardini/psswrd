@@ -1,4 +1,4 @@
-#! python
+""""""
 
 import sys
 import argparse
@@ -13,10 +13,10 @@ options:
                 Print this beautiful help message
 
   -l, --length LENGTH
-                Set password length
+                Set password length (default = 30)
 
   -m, --mode {random,numerical,alphabetical,passphrase}
-                Choose password type
+                Choose password type (default = random)
 
   -s, --separator SEPARATOR
                 Set a separator
@@ -28,10 +28,10 @@ options:
                 Provide a dictionary
 
   -c, --checktable {False,10k,100k,1M}
-                Enable checks on tables of common passwords
+                Enable checks on tables of common passwords (default = False)
 
   -C, --checkstrength
-                Enable password strength checks
+                Enable password strength checks (default = False)
 
 '''
 
