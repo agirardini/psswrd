@@ -9,13 +9,14 @@ if __name__ == "__main__":
     password = ""
 
     # if args["mode"] == "random":
-    #     password = generator.random_password()
+    #     password = generator.random_password(args["length"])
     # elif args["mode"] == "numerical":
-    #     password = generator.numerical_password()
+    #     password = generator.numerical_password(args["length"])
     # elif args["mode"] == "alphabetical":
-    #     password = generator.alphabetical_password()
+    #     password = generator.alphabetical_password(args["length"])
     # elif args["mode"] == "passphrase":
-    #     password = generator.passphrase()
+    #     password = generator.passphrase(
+    #         args["length"], args["separator"], args["delimiter"], args["dictionary"])
     # else:
     #     pass
 
