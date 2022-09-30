@@ -79,8 +79,8 @@ def parse():
 
     parser.add_argument("-c", "--checktable",
                         type=str,
-                        default=False,
-                        choices=[False, "10k", "100k", "1M"],
+                        default="",
+                        choices=["", "10k", "100k", "1M"],
                         help="Enable checks on tables of common passwords")
 
     parser.add_argument("-C", "--checkstrength",
