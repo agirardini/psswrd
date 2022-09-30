@@ -1,2 +1,4 @@
 - Add required type in arguments parsing
 - Reorganize README
+- Write test for checks functions
+- Refactor modules names

@@ -4,9 +4,9 @@ import sys
 import argparse
 
 HELP_MESSAGE = '''
-usage: psswrd.py [-h] [-l LENGTH] [-m {random,numerical,alphabetical,passphrase}] [-s SEPARATOR] [-d DELIMITER] [-D DICTIONARY] [-c {False,10k,100k,1M}] [-C CHECKSTRENGTH]
+usage: psswrd.py [-h] [-l LENGTH] [-m {random, numerical, alphabetical, passphrase}] [-s SEPARATOR] [-d DELIMITER] [-D DICTIONARY] [-c {False, 10k, 100k, 1M}] [-C CHECKSTRENGTH]
 
-A simple but handy password generator
+A simple and handy password generator
 
 options:
   -h, --help
@@ -52,27 +52,33 @@ def parse():
         description='A simple but handy password generator')
 
     parser.add_argument("-l", "--length",
+                        type=int,
                         default=30,
                         help="Set password length")
 
     parser.add_argument("-m", "--mode",
+                        type=str,
                         default="random",
                         choices=[
                             "random", "numerical", "alphabetical", "passphrase"], help="Choose password type")
 
     parser.add_argument("-s", "--separator",
+                        type=str,
                         default=None,
                         help="Set a separator")
 
     parser.add_argument("-d", "--delimiter",
+                        type=str,
                         default=None,
                         help="Set a delimiter")
 
     parser.add_argument("-D", "--dictionary",
+                        type=str,
                         default=None,
                         help="Provide a dictionary")
 
     parser.add_argument("-c", "--checktable",
+                        type=str,
                         default=False,
                         choices=[False, "10k", "100k", "1M"],
                         help="Enable checks on tables of common passwords")
