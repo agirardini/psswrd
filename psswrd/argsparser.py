@@ -1,4 +1,4 @@
-""""""
+"""This module implements argument parsing"""
 
 import sys
 import argparse
@@ -15,7 +15,7 @@ options:
   -l, --length LENGTH
                 Set password length (default = 30)
 
-  -m, --mode {random,numerical,alphabetical,passphrase}
+  -m, --mode {random, numerical, alphabetical, passphrase}
                 Choose password type (default = random)
 
   -s, --separator SEPARATOR
@@ -27,7 +27,7 @@ options:
   -D, --dictionary DICTIONARY
                 Provide a dictionary
 
-  -c, --checktable {False,10k,100k,1M}
+  -c, --checktable {False, 10k, 100k, 1M}
                 Enable checks on tables of common passwords (default = False)
 
   -C, --checkstrength
