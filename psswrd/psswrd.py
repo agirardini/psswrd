@@ -8,20 +8,20 @@ if __name__ == "__main__":
 
     password = ""
 
-    # if args["mode"] == "random":
-    #     password = generator.random_password(args["length"])
-    # elif args["mode"] == "numerical":
-    #     password = generator.numerical_password(args["length"])
-    # elif args["mode"] == "alphabetical":
-    #     password = generator.alphabetical_password(args["length"])
-    # elif args["mode"] == "passphrase":
+    # if args["mode"] == "passphrase":
     #     password = generator.passphrase(
     #         args["length"], args["separator"], args["delimiter"], args["dictionary"])
     # else:
-    #     pass
+    #     password = generator.generate_password(args["length"], args["mode"])
 
     if args["checktable"]:
         checks.check_table(password, args["checktable"])
 
     if args["checkstrength"]:
         checks.check_strength(password)
+
+    print()
+    for i in range(10):
+        print(generator.generate_password(
+            args["length"], args["mode"]))
+    print()

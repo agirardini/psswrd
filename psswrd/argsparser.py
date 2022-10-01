@@ -4,7 +4,7 @@ import sys
 import argparse
 
 HELP_MESSAGE = '''
-usage: psswrd.py [-h] [-l LENGTH] [-m {random, numerical, alphabetical, passphrase}] [-s SEPARATOR] [-d DELIMITER] [-D DICTIONARY] [-c {False, 10k, 100k, 1M}] [-C CHECKSTRENGTH]
+usage: psswrd.py [-h] [-l LENGTH] [-m {random, numerical, alphabetical, alphanumerical passphrase}] [-s SEPARATOR] [-d DELIMITER] [-D DICTIONARY] [-c {False, 10k, 100k, 1M}] [-C CHECKSTRENGTH]
 
 A simple and handy password generator
 
@@ -15,7 +15,7 @@ options:
   -l, --length LENGTH
                 Set password length (default = 30)
 
-  -m, --mode {random, numerical, alphabetical, passphrase}
+  -m, --mode {random, numerical, alphabetical, alphanumerical, passphrase}
                 Choose password type (default = random)
 
   -s, --separator SEPARATOR
@@ -60,7 +60,7 @@ def parse():
                         type=str,
                         default="random",
                         choices=[
-                            "random", "numerical", "alphabetical", "passphrase"], help="Choose password type")
+                            "random", "numerical", "alphabetical", "alphanumerical", "passphrase"], help="Choose password type")
 
     parser.add_argument("-s", "--separator",
                         type=str,

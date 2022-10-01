@@ -5,23 +5,20 @@ import string
 import secrets
 
 
-def random_password(length):
-    characters_set = string.ascii_letters + string.digits + string.punctuation
+def generate_password(length, mode):
+
+    if mode == "numerical":
+        characters_set = string.digits
+    elif mode == "alphabetical":
+        characters_set = string.ascii_letters
+    elif mode == "alphanumerical":
+        characters_set = string.ascii_letters + string.digits
+    else:
+        characters_set = string.ascii_letters + string.digits + string.punctuation
+
     password = ''.join(secrets.choice(characters_set) for i in range(length))
     return password
 
 
-def numerical_password(length):
-    characters_set = string.digits
-    password = ''.join(secrets.choice(characters_set) for i in range(length))
-    return password
-
-
-def alphabetical_password(length):
-    characters_set = string.ascii_letters
-    password = ''.join(secrets.choice(characters_set) for i in range(length))
-    return password
-
-
-def passphrase(length, separator, delimiter, dictionary):
+def generate_passphrase(length, separator, delimiter, dictionary):
     return

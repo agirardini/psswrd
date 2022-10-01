@@ -2,7 +2,7 @@
 A simple and handy password generator
 
 ```
-psswrd.py [-h] [-l LENGTH] [-m {random, numerical, alphabetical, passphrase}] [-s SEPARATOR] [-d DELIMITER] [-D DICTIONARY] [-c {False, 10k, 100k, 1M}] [-C CHECKSTRENGTH]
+psswrd.py [-h] [-l LENGTH] [-m {random, numerical, alphabetical, alphanumerical, passphrase}] [-s SEPARATOR] [-d DELIMITER] [-D DICTIONARY] [-c {False, 10k, 100k, 1M}] [-C CHECKSTRENGTH]
 ```
 
 OPTIONS:
@@ -15,7 +15,7 @@ Print a beautiful help message
 
 Set password length (default = 30)
 
-> -m, --mode {random, numerical, alphabetical, passphrase}
+> -m, --mode {random, numerical, alphabetical, alphanumerical, passphrase}
 
 Choose password type (default = random)
 
