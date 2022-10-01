@@ -2,7 +2,7 @@
 A simple and handy password generator
 
 ```
-psswrd.py [-h] [-l LENGTH] [-m {random, numerical, alphabetical, alphanumerical, passphrase}] [-s SEPARATOR] [-d DELIMITER] [-D DICTIONARY] [-c {False, 10k, 100k, 1M}] [-C CHECKSTRENGTH]
+psswrd.py [-h] [-l LENGTH] [-n NUMBER] [-m {random, numerical, alphabetical, alphanumerical, passphrase}] [-s SEPARATOR] [-d DELIMITER] [-D DICTIONARY] [-c {False, 10k, 100k, 1M}] [-C CHECKSTRENGTH]
 ```
 
 OPTIONS:
@@ -11,30 +11,34 @@ OPTIONS:
 
 Print a beautiful help message
 
-> -l, --length LENGTH
+> -d, --delimiter DELIMITER
 
-Set password length (default = 30)
-
-> -m, --mode {random, numerical, alphabetical, alphanumerical, passphrase}
-
-Choose password type (default = random)
+Set a delimiter
 
 > -s, --separator SEPARATOR
 
 Set a separator
 
-> -d, --delimiter DELIMITER
-
-Set a delimiter
-
 > -D, --dictionary DICTIONARY
 
 Provide a dictionary
+
+> -l, --length LENGTH
+
+Set password length (default = 30)
+
+> -n, --number NUMBER
+
+Generate 'number' passwords (default = 1)
+
+> -C, --checkstrength
+
+Enable password strength checks (default = False)
 
 > -c, --checktable {"", 10k, 100k, 1M}
 
 Enable checks on tables of common passwords (default = "")
 
-> -C, --checkstrength
+> -m, --mode {random, numerical, alphabetical, alphanumerical, passphrase}
 
-Enable password strength checks (default = False)
+Choose password type (default = random)

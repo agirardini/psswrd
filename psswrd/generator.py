@@ -1,4 +1,4 @@
-"""This module implements all the password generator functions"""
+"""This module implements all password generator functions"""
 
 
 import string

@@ -4,19 +4,13 @@ import sys
 import argparse
 
 HELP_MESSAGE = '''
-usage: psswrd.py [-h] [-l LENGTH] [-m {random, numerical, alphabetical, alphanumerical passphrase}] [-s SEPARATOR] [-d DELIMITER] [-D DICTIONARY] [-c {False, 10k, 100k, 1M}] [-C CHECKSTRENGTH]
+usage: psswrd.py [-h] [-l LENGTH] [-n NUMBER] [-m {random, numerical, alphabetical, alphanumerical passphrase}] [-s SEPARATOR] [-d DELIMITER] [-D DICTIONARY] [-c {False, 10k, 100k, 1M}] [-C CHECKSTRENGTH]
 
 A simple and handy password generator
 
 options:
   -h, --help
                 Print this beautiful help message
-
-  -l, --length LENGTH
-                Set password length (default = 30)
-
-  -m, --mode {random, numerical, alphabetical, alphanumerical, passphrase}
-                Choose password type (default = random)
 
   -s, --separator SEPARATOR
                 Set a separator
@@ -27,11 +21,20 @@ options:
   -D, --dictionary DICTIONARY
                 Provide a dictionary
 
-  -c, --checktable {False, 10k, 100k, 1M}
-                Enable checks on tables of common passwords (default = False)
+  -l, --length LENGTH
+                Set password length (default = 30)
+
+  -n, --number NUMBER
+                Generate 'number' passwords (default = 1)
 
   -C, --checkstrength
                 Enable password strength checks (default = False)
+
+  -c, --checktable {False, 10k, 100k, 1M}
+                Enable checks on tables of common passwords (default = False)
+
+  -m, --mode {random, numerical, alphabetical, alphanumerical, passphrase}
+                Choose password type (default = random)
 
 '''
 
@@ -55,6 +58,11 @@ def parse():
                         type=int,
                         default=30,
                         help="Set password length")
+
+    parser.add_argument("-n", "--number",
+                        type=int,
+                        default=1,
+                        help="Generate 'number' passwords")
 
     parser.add_argument("-m", "--mode",
                         type=str,

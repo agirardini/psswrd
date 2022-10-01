@@ -1,8 +1,0 @@
-[x] Refactor generator.py
-[ ] Add 'count' argument (number of passwords)
-[x] Add mode alphanumerical
-[ ] Write test for checks functions
-[ ] Write test for generator functions
-[ ] Make separator and delimiter subarguments?
-[ ] Refactor modules names
-[ ] Beautify README
