@@ -5,5 +5,5 @@
 - [ ] Write test for checks functions
 - [ ] Write test for generator functions
 - [ ] Make separator and delimiter subarguments?
-- [ ] Refactor modules names
+- [ ] Refactor modules names (and tests)
 - [ ] Beautify README

@@ -6,6 +6,13 @@ import secrets
 
 
 def generate_password(length, mode):
+    """Generate a password long 'length' and composed by differnt characters sets depending on the value of 'mode':
+
+    - 'numerical': digits only
+    - 'alphabetical': upper and lowercase letters
+    - 'alphanumerical': digits and letters
+    - 'random': digits, letters, punctuation characters
+    """
 
     if mode == "numerical":
         characters_set = string.digits
@@ -21,4 +28,5 @@ def generate_password(length, mode):
 
 
 def generate_passphrase(length, separator, delimiter, dictionary):
+    """"""
     return
