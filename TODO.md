@@ -1,9 +1,13 @@
 - [x] Refactor generator.py
 - [x] Add 'count' argument (number of passwords)
 - [x] Add mode alphanumerical
-- [ ] implement generate_passphrase
+- [ ] Implement generate_passphrase
+- [ ] Add default option for dictionary
 - [ ] Write test for checks functions
 - [ ] Write test for generator functions
+- [ ] Fix cheks messages to work with '-n' argument
+- [ ] Add acronim for passphrase
 - [ ] Make separator and delimiter subarguments?
 - [ ] Refactor modules names (and tests)
 - [ ] Beautify README
+- [ ] Create package
