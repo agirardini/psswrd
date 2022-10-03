@@ -31,6 +31,9 @@ Set password length (default = 30)
 
 Generate 'number' passwords (default = 1)
 
+> -w, --words WORDS
+Set number of 'words' to use for passphrase (default = 4)
+
 > -C, --checkstrength
 
 Enable password strength checks (default = False)
