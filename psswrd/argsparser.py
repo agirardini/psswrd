@@ -38,6 +38,7 @@ options:
 
 '''
 
+
 class CustomParser(argparse.ArgumentParser):
 
     def print_help(self, file=None):
@@ -47,8 +48,9 @@ class CustomParser(argparse.ArgumentParser):
 
     def print_usage(self, file=None):
         if file is None:
-                file = sys.stdout
+            file = sys.stdout
         file.write(HELP_MESSAGE)
+
 
 def parse():
     parser = CustomParser(
@@ -57,43 +59,57 @@ def parse():
     parser.add_argument("-l", "--length",
                         type=int,
                         default=30,
+                        dest="length",
                         help="Set password length")
 
     parser.add_argument("-n", "--number",
                         type=int,
+                        dest="number",
                         default=1,
                         help="Generate 'number' passwords")
 
-    parser.add_argument("-m", "--mode",
-                        type=str,
-                        default="random",
-                        choices=[
-                            "random", "numerical", "alphabetical", "alphanumerical", "passphrase"], help="Choose password type")
-
     parser.add_argument("-s", "--separator",
                         type=str,
-                        default=None,
+                        default=" ",
+                        dest="separator",
                         help="Set a separator")
 
     parser.add_argument("-d", "--delimiter",
                         type=str,
-                        default=None,
+                        default="",
+                        dest="delimiter",
                         help="Set a delimiter")
 
     parser.add_argument("-D", "--dictionary",
                         type=str,
                         default=None,
+                        dest="dictionary",
                         help="Provide a dictionary")
 
-    parser.add_argument("-c", "--checktable",
+    parser.add_argument("-w", "--words",
+                        type=int,
+                        default=4,
+                        dest="words",
+                        help="Select number of words for passphrase")
+
+    parser.add_argument("-m", "--mode",
                         type=str,
-                        default="",
-                        choices=["", "10k", "100k", "1M"],
-                        help="Enable checks on tables of common passwords")
+                        dest="mode",
+                        default="random",
+                        choices=[
+                            "random", "numerical", "alphabetical", "alphanumerical", "passphrase"], help="Choose password type")
 
     parser.add_argument("-C", "--checkstrength",
                         default=False,
                         action='store_true',
+                        dest="checkstrength",
                         help="Enable password strength checks")
+
+    parser.add_argument("-c", "--checktable",
+                        type=str,
+                        default="",
+                        dest="checktable",
+                        choices=["", "10k", "100k", "1M"],
+                        help="Enable checks on tables of common passwords")
 
     return vars(parser.parse_args())
