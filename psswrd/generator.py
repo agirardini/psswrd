@@ -1,6 +1,6 @@
 """This module implements password generator functions.
 
-Methods:
+Functions:
     generate_password(length, number, mode):
         Generate a list of passwords composed by differnt characters sets.
 

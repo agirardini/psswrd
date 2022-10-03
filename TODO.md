@@ -3,7 +3,8 @@
 - [x] Add mode alphanumerical
 - [x] Implement generate_passphrase
 - [x] Add default option for dictionary
-- [ ] Fix cheks messages to work with '-n' argument
+- [x] Fix cheks messages to work with '-n' argument
+- [ ] Fix cheks with passphrase
 - [ ] Write test for checks functions
 - [ ] Write test for generator functions
 - [ ] Add acronim for passphrase

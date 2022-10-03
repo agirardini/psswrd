@@ -1,8 +1,13 @@
-"""This module implements all the functions necessary to check for password strength and commonness"""
+"""This module implements the functions necessary to check for password strength and commonness
+
+Functions:
+
+"""
 
 
 import os
 import re
+import sys
 
 
 terminal_modifiers = {
@@ -16,47 +21,57 @@ terminal_modifiers = {
 }
 
 
-def check_table(password, table):
+def check_table(passwords, table):
     """Check if password is included in a table of common password and print an adequate message"""
+
     tables = {
-        "1M": os.path.normpath("../data/common1M.txt"),
-        "10k": os.path.normpath("../data/common10k.txt"),
-        "100k": os.path.normpath("../data/common100k.txt"),
+        "1M": os.path.normpath("./data/common1M.txt"),
+        "10k": os.path.normpath("./data/common10k.txt"),
+        "100k": os.path.normpath("./data/common100k.txt"),
     }
 
     if table in tables.keys():
-        with open(tables[table], "rt") as file:
-            passwords = file.read().splitlines()
+        try:
+            with open(tables[table], "rt") as file:
+                common_passwords = file.read().splitlines()
+        except Exception as error:
+            sys.exit(f"Unable to retrieve the passwords table: {error}\n")
 
-        if password in passwords:
-            badnews = f"\n⛔  ➜  I would {terminal_modifiers['RED']}{terminal_modifiers['BOLD']}NOT USE{terminal_modifiers['RESET']} this one bro, it's quite common.\n"
-            print(badnews)
-        else:
-            goodnews = f"\n👻 ➜  You lucky bastard, you're password seems {terminal_modifiers['GREEN']}{terminal_modifiers['BOLD']}ORIGINAL{terminal_modifiers['RESET']}.\n"
-            print(goodnews)
+        badnews = f"⛔  ➜  I would {terminal_modifiers['RED']}{terminal_modifiers['BOLD']}NOT USE{terminal_modifiers['RESET']} this one bro, it's quite common."
+        goodnews = f"👻 ➜  You lucky bastard, you're password seems {terminal_modifiers['GREEN']}{terminal_modifiers['BOLD']}ORIGINAL{terminal_modifiers['RESET']}."
+
+        for pswd, msg in passwords.items():
+            if pswd in common_passwords:
+                passwords[pswd][0] = badnews
+            else:
+                passwords[pswd][0] = goodnews
+
+    return passwords
 
 
-def check_strength(password):
+def check_strength(passwords):
     """Check password strength and print a coherent message"""
 
-    if check_policies(password, 25, 3, 3, 3, 3):
-        strong_password = f"\n🟢 ➜  Go on champ 💪🏼 this is a really {terminal_modifiers['GREEN']}{terminal_modifiers['BOLD']}STRONG{terminal_modifiers['RESET']} password.\n"
-        print(strong_password)
-        return
+    strong_password = f"🟢 ➜  Go on champ 💪🏼 this is a really {terminal_modifiers['GREEN']}{terminal_modifiers['BOLD']}STRONG{terminal_modifiers['RESET']} password."
+    reasonable_password = f"🔵 ➜  This password is actually {terminal_modifiers['CYAN']}{terminal_modifiers['BOLD']}FINE{terminal_modifiers['RESET']} 🙃."
+    weak_password = f"🟡 ➜  Meh... you can do way better, this one is pretty {terminal_modifiers['YELLOW']}{terminal_modifiers['BOLD']}WEAK{terminal_modifiers['RESET']} 🤕."
+    bad_password = f"🔴 ➜  No way, do not even try. This is {terminal_modifiers['RED']}{terminal_modifiers['BOLD']}SHIT{terminal_modifiers['RESET']} 💩."
 
-    if check_policies(password, 12, 2, 2, 2, 2):
-        reasonable_password = f"\n🔵 ➜  This password is actually {terminal_modifiers['CYAN']}{terminal_modifiers['BOLD']}FINE{terminal_modifiers['RESET']} 🙃.\n"
-        print(reasonable_password)
-        return
+    for pswd, msg in passwords.items():
 
-    if check_policies(password, 8, 1, 1, 1, 1):
-        weak_password = f"\n🟡 ➜  Meh... you can do way better, this one is pretty {terminal_modifiers['YELLOW']}{terminal_modifiers['BOLD']}WEAK{terminal_modifiers['RESET']} 🤕.\n"
-        print(weak_password)
-        return
+        if check_policies(pswd, 20, 3, 3, 3, 3):
+            passwords[pswd][1] = strong_password
+            continue
+        if check_policies(pswd, 12, 2, 2, 2, 2):
+            passwords[pswd][1] = reasonable_password
+            continue
+        if check_policies(pswd, 8, 1, 1, 1, 1):
+            passwords[pswd][1] = weak_password
+            continue
+        else:
+            passwords[pswd][1] = bad_password
 
-    bad_password = f"\n🔴 ➜  No way, do not even try. This is {terminal_modifiers['RED']}{terminal_modifiers['BOLD']}SHIT{terminal_modifiers['RESET']} 💩.\n"
-    print(bad_password)
-
+    return passwords
 
 def check_policies(password, length, digits, lowercase, uppercase, symbols):
     """Check if the string 'password' satisfies certain characters constraints

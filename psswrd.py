@@ -1,6 +1,6 @@
-from psswrd import checks
 from psswrd import generator
 from psswrd import argsparser
+from psswrd import presentation
 
 def main():
 
@@ -15,18 +15,7 @@ def main():
             passwords = generator.generate_password(
                 args["length"], args["number"], args["mode"])
 
-    if args["checktable"]:
-        checks.check_table(passwords, args["checktable"])
-
-    if args["checkstrength"]:
-        checks.check_strength(passwords)
-
-    print()
-    counter = 1
-    for pswd in passwords:
-        print(f"{counter}. {pswd}")
-        counter += 1
-    print()
+    presentation.report(passwords, args["checktable"], args["checkstrength"])
 
 
 if __name__ == "__main__":

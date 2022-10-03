@@ -76,7 +76,7 @@ def parse():
                         type=int,
                         default=20,
                         dest="length",
-                        choices=range(6, 100),
+                        choices=range(1, 100),
                         help="Set password length")
 
     parser.add_argument("-n", "--number",
