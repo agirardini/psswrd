@@ -1,9 +1,18 @@
 """This module implements argument parsing"""
 
+
+import os
 import sys
 import argparse
 
-HELP_MESSAGE = '''
+
+class CustomParser(argparse.ArgumentParser):
+    """Wrapper of ArgumentParser for custom help message.
+
+    This class is used to override 'print_help' and 'print_usage' standard behaviour in order to print a personalized help message contained in 'HELP_MESSAGE'.
+    """
+
+    HELP_MESSAGE = '''
 usage: psswrd.py [-h] [-l LENGTH] [-n NUMBER] [-m {random, numerical, alphabetical, alphanumerical passphrase}] [-s SEPARATOR] [-d DELIMITER] [-D DICTIONARY] [-c {False, 10k, 100k, 1M}] [-C CHECKSTRENGTH]
 
 A simple and handy password generator
@@ -22,7 +31,7 @@ options:
                 Provide a dictionary
 
   -l, --length LENGTH
-                Set password length (default = 30)
+                Set password length (default = 20)
 
   -n, --number NUMBER
                 Generate 'number' passwords (default = 1)
@@ -41,34 +50,39 @@ options:
 
 '''
 
-
-class CustomParser(argparse.ArgumentParser):
-
     def print_help(self, file=None):
         if file is None:
             file = sys.stdout
-        file.write(HELP_MESSAGE)
+        file.write(CustomParser.HELP_MESSAGE)
 
     def print_usage(self, file=None):
         if file is None:
             file = sys.stdout
-        file.write(HELP_MESSAGE)
+        file.write(CustomParser.HELP_MESSAGE)
 
 
 def parse():
+    """
+    Parse program's arguments.
+
+    Returns:
+        A dictionary of parsed arguments in the format {"ARG": "VALUE"}.
+    """
+
     parser = CustomParser(
         description='A simple but handy password generator')
 
     parser.add_argument("-l", "--length",
                         type=int,
-                        default=30,
+                        default=20,
                         dest="length",
+                        choices=range(6, 100),
                         help="Set password length")
 
     parser.add_argument("-n", "--number",
                         type=int,
-                        dest="number",
                         default=1,
+                        dest="number",
                         help="Generate 'number' passwords")
 
     parser.add_argument("-s", "--separator",
@@ -83,17 +97,18 @@ def parse():
                         dest="delimiter",
                         help="Set a delimiter")
 
-    parser.add_argument("-D", "--dictionary",
-                        type=str,
-                        default=None,
-                        dest="dictionary",
-                        help="Provide a dictionary")
-
     parser.add_argument("-w", "--words",
                         type=int,
                         default=4,
                         dest="words",
+                        choices=range(1, 50),
                         help="Select number of words for passphrase")
+
+    parser.add_argument("-D", "--dictionary",
+                        type=str,
+                        dest="dictionary",
+                        default=os.path.normpath("./data/dictionary.txt"),
+                        help="Provide a dictionary")
 
     parser.add_argument("-m", "--mode",
                         type=str,

@@ -2,21 +2,18 @@ from psswrd import checks
 from psswrd import generator
 from psswrd import argsparser
 
-if __name__ == "__main__":
+def main():
 
     args = (argsparser.parse())
-    # print(args)
 
     passwords = []
 
     if args["mode"] == "passphrase":
-        for i in range(args["number"]):
-            passwords.append(generator.passphrase(args["dictionary"]),
-                args["length"], args["separator"], args["delimiter"], )
+        passwords = generator.generate_passphrase(args["dictionary"], args["number"], args["words"], args["separator"], args["delimiter"])
     else:
         for i in range(args["number"]):
-            passwords.append(generator.generate_password(
-                args["length"], args["mode"]))
+            passwords = generator.generate_password(
+                args["length"], args["number"], args["mode"])
 
     if args["checktable"]:
         checks.check_table(passwords, args["checktable"])
@@ -30,3 +27,7 @@ if __name__ == "__main__":
         print(f"{counter}. {pswd}")
         counter += 1
     print()
+
+
+if __name__ == "__main__":
+    main()

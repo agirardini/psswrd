@@ -25,7 +25,7 @@ Provide a dictionary
 
 > -l, --length LENGTH
 
-Set password length (default = 30)
+Set password length (default = 20)
 
 > -n, --number NUMBER
 
