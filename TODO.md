@@ -7,6 +7,7 @@
 - [ ] Fix cheks with passphrase
 - [ ] Write test for checks functions
 - [ ] Write test for generator functions
+- [ ] Write test for argument parsing functions
 - [ ] Add acronim for passphrase
 - [ ] Add capitalized for passphrase
 - [ ] Refactor modules names (and tests)
