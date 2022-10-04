@@ -1,4 +1,13 @@
-"""This module implements argument parsing"""
+"""The 'argsparser' module implements argument parsing.
+
+Classes:
+    CustomParser(argparse.ArgumentParser):
+        A wrapper of ArgumentParser for custom help message.
+
+Functions:
+    parse():
+        Parse program's arguments.
+"""
 
 
 import os
@@ -66,7 +75,7 @@ def parse():
     Parse program's arguments.
 
     Returns:
-        A dictionary of parsed arguments in the format {"ARG": "VALUE"}.
+        A dictionary of parsed arguments in the format {"ARG": "VALUE", ...}.
     """
 
     parser = CustomParser(

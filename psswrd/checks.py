@@ -1,7 +1,10 @@
-"""This module implements the functions necessary to check for password strength and commonness
+"""The 'checks' module implements the functions necessary to check for password strength and commonness.
 
 Functions:
-
+    check_table(passwords, table):
+        Check if given passwords are included in a table of common passwords and populate 'passwords' with the right response message.
+    check_strength(passwords):
+        Check passwords strength and populate 'passwords' accordingly with a coherent message.
 """
 
 
@@ -22,7 +25,19 @@ terminal_modifiers = {
 
 
 def check_table(passwords, table):
-    """Check if password is included in a table of common password and print an adequate message"""
+    """
+    Check if given passwords are included in a table of common passwords and populate 'passwords' with the right response messages.
+
+    Args:
+        passwords:
+            A data structure in the format {"password": ["", ""]}.
+        table:
+            A string representing the path of the table to use.
+
+    Returns:
+        passwords:
+            The same data structure provided as argument.
+    """
 
     tables = {
         "1M": os.path.normpath("./data/common1M.txt"),
@@ -38,7 +53,7 @@ def check_table(passwords, table):
             sys.exit(f"Unable to retrieve the passwords table: {error}\n")
 
         badnews = f"⛔  ➜  I would {terminal_modifiers['RED']}{terminal_modifiers['BOLD']}NOT USE{terminal_modifiers['RESET']} this one bro, it's quite common."
-        goodnews = f"👻 ➜  You lucky bastard, you're password seems {terminal_modifiers['GREEN']}{terminal_modifiers['BOLD']}ORIGINAL{terminal_modifiers['RESET']}."
+        goodnews = f"👻 ➜  You lucky bastard, this password seems {terminal_modifiers['GREEN']}{terminal_modifiers['BOLD']}ORIGINAL{terminal_modifiers['RESET']}."
 
         for pswd, msg in passwords.items():
             if pswd in common_passwords:
@@ -50,7 +65,17 @@ def check_table(passwords, table):
 
 
 def check_strength(passwords):
-    """Check password strength and print a coherent message"""
+    """
+    Check passwords strength and populate 'passwords' accordingly with coherent messages.
+
+    Args:
+        passwords:
+            A data structure in the format {"password": ["", ""]}.
+
+    Returns:
+        passwords:
+            The same data structure provided as argument.
+    """
 
     strong_password = f"🟢 ➜  Go on champ 💪🏼 this is a really {terminal_modifiers['GREEN']}{terminal_modifiers['BOLD']}STRONG{terminal_modifiers['RESET']} password."
     reasonable_password = f"🔵 ➜  This password is actually {terminal_modifiers['CYAN']}{terminal_modifiers['BOLD']}FINE{terminal_modifiers['RESET']} 🙃."
@@ -74,7 +99,8 @@ def check_strength(passwords):
     return passwords
 
 def check_policies(password, length, digits, lowercase, uppercase, symbols):
-    """Check if the string 'password' satisfies certain characters constraints
+    """
+    Check if the string 'password' satisfies certain characters constraints.
 
     'digits', 'lowercase', 'uppercase' and 'symbols' are all the number of corresponding characters that need to be present in 'password' to pass the check, given that 'length' is also fine
     """

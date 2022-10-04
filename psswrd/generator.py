@@ -1,8 +1,8 @@
-"""This module implements password generator functions.
+"""The 'generator' module implements passwords generation functions.
 
 Functions:
     generate_password(length, number, mode):
-        Generate a list of passwords composed by differnt characters sets.
+        Generate a list of passwords composed by different characters sets.
 
     generate_passphrase(dictionary, number, words, separator, delimiter):
         Generate a list of passphrase.
@@ -16,7 +16,7 @@ import secrets
 
 def generate_password(length, number, mode):
     """
-    Generate a password composed by differnt characters sets.
+    Generate a password composed by different characters sets.
 
     Args:
         length:

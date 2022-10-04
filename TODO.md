@@ -5,6 +5,7 @@
 - [x] Add default option for dictionary
 - [x] Fix cheks messages to work with '-n' argument
 - [ ] Fix cheks with passphrase
+- [ ] Refactor info
 - [ ] Write test for checks functions
 - [ ] Write test for generator functions
 - [ ] Write test for argument parsing functions
