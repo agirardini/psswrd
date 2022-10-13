@@ -110,7 +110,7 @@ def parse():
                         type=int,
                         default=4,
                         dest="words",
-                        choices=range(1, 50),
+                        choices=range(2, 50),
                         help="Select number of words for passphrase")
 
     parser.add_argument("-D", "--dictionary",
