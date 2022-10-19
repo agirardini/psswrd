@@ -78,7 +78,7 @@ def check_strength(passwords):
             The same data structure provided as argument.
     """
 
-    strong_password = f"🟢 ➜  Go on champ 💪🏼 this is a really {terminal_modifiers['GREEN']}{terminal_modifiers['BOLD']}STRONG{terminal_modifiers['RESET']} password."
+    strong_password = f"🟢 ➜  Go on champ 🏆 this is a {terminal_modifiers['GREEN']}{terminal_modifiers['BOLD']}STRONG{terminal_modifiers['RESET']} password."
 
     reasonable_password = f"🔵 ➜  This password is actually {terminal_modifiers['CYAN']}{terminal_modifiers['BOLD']}FINE{terminal_modifiers['RESET']} 🙃."
 

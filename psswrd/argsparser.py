@@ -39,6 +39,9 @@ options:
   -D, --dictionary DICTIONARY
                 Provide a dictionary
 
+  -a, --acronym
+                Make passphrase follow an acronym
+
   -l, --length LENGTH
                 Set password length (default = 20)
 
@@ -48,8 +51,11 @@ options:
   -w, --words WORDS
                 Set number of 'words' to use for passphrase (default = 4)
 
-  -C, --checkstrength
+  -S, --checkstrength
                 Enable password strength checks (default = False)
+
+  -C, --capitalized
+                Make passphrase words capitalized (default = False)
 
   -c, --checktable {False, 10k, 100k, 1M}
                 Enable checks on tables of common passwords (default = False)
@@ -126,7 +132,7 @@ def parse():
                         choices=[
                             "random", "numerical", "alphabetical", "alphanumerical", "passphrase"], help="Choose password type")
 
-    parser.add_argument("-C", "--checkstrength",
+    parser.add_argument("-S", "--checkstrength",
                         default=False,
                         action='store_true',
                         dest="checkstrength",
@@ -134,9 +140,25 @@ def parse():
 
     parser.add_argument("-c", "--checktable",
                         type=str,
-                        default="",
+                        default="10k",
                         dest="checktable",
-                        choices=["", "10k", "100k", "1M"],
+                        choices=["10k", "100k", "1M"],
                         help="Enable checks on tables of common passwords")
 
+    parser.add_argument("-C", "--capitalized",
+                        default=False,
+                        dest="capitalized",
+                        action='store_true',
+                        help="Make passphrase words capitalized")
+
+    parser.add_argument("-a", "--acronym",
+                        type=str,
+                        default="",
+                        dest="acronym",
+                        help="Make passphrase follow an acronym")
+
+
     return vars(parser.parse_args())
+
+if __name__ == "__main__":
+    print(parse())

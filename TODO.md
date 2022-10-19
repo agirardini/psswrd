@@ -12,6 +12,7 @@
 - [ ] Optimize check_strength
 - [ ] Add acronim for passphrase
 - [ ] Add capitalized for passphrase
+- [ ] Update README
 - [ ] Refactor modules names (and tests)
 - [ ] Beautify README
 - [ ] Create package
