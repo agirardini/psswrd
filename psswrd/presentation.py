@@ -11,7 +11,7 @@ Functions:
 from psswrd import checks
 
 
-def report(passwords, checktable, checkstrength):
+def report(passwords, args):
     """
     Gather additional info on the generated passwords (if required) and print results.
 
@@ -26,11 +26,14 @@ def report(passwords, checktable, checkstrength):
 
     info = dict.fromkeys(passwords, ["", ""])
 
-    if checktable:
-        info = checks.check_table(info, checktable)
+    if args["checktable"]:
+        info = checks.check_table(info, args["checktable"])
 
-    if checkstrength:
-        info = checks.check_strength(info)
+    if args["checkstrength"]:
+        if args["mode"] == "passphrase":
+            info = checks.check_passphrases_strength(info)
+        else:
+            info = checks.check_passwords_strength(info)
 
     print_results(info)
 

@@ -15,7 +15,7 @@ def main():
             passwords = generator.generate_password(
                 args["length"], args["number"], args["mode"])
 
-    presentation.report(passwords, args["checktable"], args["checkstrength"])
+    presentation.report(passwords, args)
 
 
 if __name__ == "__main__":
