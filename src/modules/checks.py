@@ -40,9 +40,9 @@ def check_table(passwords, table):
     """
 
     tables = {
-        "1M": os.path.normpath("./data/common1M.txt"),
-        "10k": os.path.normpath("./data/common10k.txt"),
-        "100k": os.path.normpath("./data/common100k.txt"),
+        "1M": os.path.normpath("../data/common1M.txt"),
+        "10k": os.path.normpath("../data/common10k.txt"),
+        "100k": os.path.normpath("../data/common100k.txt"),
     }
 
     if table in tables.keys():
@@ -64,6 +64,7 @@ def check_table(passwords, table):
 
     return passwords
 
+
 def check_passphrases_strength(passphrases):
     """Check passphrases strength and populate 'passwords' accordingly with coherent messages.
 
@@ -76,19 +77,19 @@ def check_passphrases_strength(passphrases):
             The same data structure provided as argument.
     """
 
-    bad_passphrase = f"🟢 ➜  This is what I call a {terminal_modifiers['GREEN']}{terminal_modifiers['BOLD']}STRONG{terminal_modifiers['RESET']} passphrase 💪."
+    good_passphrase = f"🟢 ➜  This is what I call a {terminal_modifiers['GREEN']}{terminal_modifiers['BOLD']}STRONG{terminal_modifiers['RESET']} passphrase 💪."
 
-    good_passphrase = f"🔴 ➜  Cmon bro, do not do it. This passphrase is {terminal_modifiers['RED']}{terminal_modifiers['BOLD']}BAD{terminal_modifiers['RESET']} 😵‍💫."
+    bad_passphrase = f"🔴 ➜  Cmon bro, do not do it. This passphrase is {terminal_modifiers['RED']}{terminal_modifiers['BOLD']}BAD{terminal_modifiers['RESET']} 😵‍💫."
 
     for pswd, msg in passphrases.items():
 
         if check_policies(pswd, 16, 0, 0, 2, 2):
             passphrases[pswd][1] = good_passphrase
-            continue
         else:
             passphrases[pswd][1] = bad_passphrase
 
     return passphrases
+
 
 def check_passwords_strength(passwords):
     """
@@ -121,11 +122,11 @@ def check_passwords_strength(passwords):
             continue
         if check_policies(pswd, 8, 1, 1, 1, 1):
             passwords[pswd][1] = weak_password
-            continue
         else:
             passwords[pswd][1] = bad_password
 
     return passwords
+
 
 def check_policies(password, length, digits, lowercase, uppercase, symbols):
     """

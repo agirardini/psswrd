@@ -4,7 +4,7 @@
 import string
 import unittest
 
-from psswrd import generator
+from ..src.modules import generators
 
 
 class TestGeneratorMethods(unittest.TestCase):
@@ -34,19 +34,19 @@ class TestGeneratorMethods(unittest.TestCase):
         length = 30
 
         with self.subTest():
-            password = generator.generate_password(length, "random")
+            password = generators.generate_password(length, "random")
             self.assertPassword(password, length, "random")
 
         with self.subTest():
-            password = generator.generate_password(length, "numerical")
+            password = generators.generate_password(length, "numerical")
             self.assertPassword(password, length, "numerical")
 
         with self.subTest():
-            password = generator.generate_password(length, "alphabetical")
+            password = generators.generate_password(length, "alphabetical")
             self.assertPassword(password, length, "alphabetical")
 
         with self.subTest():
-            password = generator.generate_password(length, "alphanumerical")
+            password = generators.generate_password(length, "alphanumerical")
             self.assertPassword(password, length, "alphanumerical")
 
 

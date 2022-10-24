@@ -4,14 +4,15 @@
 - [x] Implement generate_passphrase
 - [x] Add default option for dictionary
 - [x] Fix checks messages to work with '-n' argument
-- [ ] Fix checks with passphrase
+- [x] Fix checks with passphrase
 - [ ] Refactor info
-- [ ] Write test for checks functions
-- [ ] Write test for generator functions
-- [ ] Write test for argument parsing functions
+- [ ] Polish check_policies
 - [ ] Optimize check_strength
 - [ ] Add acronim for passphrase
 - [ ] Add capitalized for passphrase
+- [ ] Write test for checks functions
+- [ ] Write test for generator functions
+- [ ] Write test for argument parsing functions
 - [ ] Update README
 - [ ] Refactor modules names (and tests)
 - [ ] Beautify README

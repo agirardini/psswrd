@@ -122,7 +122,7 @@ def parse():
     parser.add_argument("-D", "--dictionary",
                         type=str,
                         dest="dictionary",
-                        default=os.path.normpath("./data/dictionary.txt"),
+                        default=os.path.normpath("../data/dictionary.txt"),
                         help="Provide a dictionary")
 
     parser.add_argument("-m", "--mode",
@@ -140,9 +140,9 @@ def parse():
 
     parser.add_argument("-c", "--checktable",
                         type=str,
-                        default="10k",
+                        default="",
                         dest="checktable",
-                        choices=["10k", "100k", "1M"],
+                        choices=["", "10k", "100k", "1M"],
                         help="Enable checks on tables of common passwords")
 
     parser.add_argument("-C", "--capitalized",

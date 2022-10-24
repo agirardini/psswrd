@@ -8,7 +8,7 @@ Functions:
 """
 
 
-from psswrd import checks
+from modules import checks
 
 
 def report(passwords, args):
